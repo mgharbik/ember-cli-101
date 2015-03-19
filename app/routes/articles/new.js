@@ -18,5 +18,11 @@ export default Ember.Route.extend({
 		cancel: function(){
 			this.transitionTo('articles');
 		}
+	},
+	deactivate: function(){
+		var model = this.modelFor('articles/new');
+		if (model.get('isNew')){
+			model.destroyRecord();
+		}
 	}
 });
