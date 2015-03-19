@@ -13,8 +13,8 @@ export default Ember.Controller.extend({
 				});
 			} else {
 				this.set('errorMessage', 'You have to fill all the fields');
+				return false;
 			}
-			return false;
 		},
 		cancel: function(){
 			return true;
