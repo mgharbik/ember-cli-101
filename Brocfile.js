@@ -21,7 +21,6 @@ app.import('vendor/fontello/font/fontello.svg', {
 app.import('vendor/fontello/font/fontello.woff', {
 	destDir: 'font'
 });
-app.import('bower_components/moment/moment.js');
 
 // If you need to use different assets in different
 // environments, specify an object as the first parameter. That
