@@ -8,7 +8,14 @@ export default DS.Model.extend({
   email: DS.attr('string'),
   twitter: DS.attr('string'),
   totalArticles: DS.attr('number'),
-  fullName: Ember.computed('firstName', 'lastName', function(){
-  	return this.get('firstName') + ' ' + this.get('lastName');
-  })
+  fullName: function(key, value, oldValue){
+  	if (arguments.length === 1){
+  		return this.get('firstName') + ' ' + this.get('lastName');
+  	} else {
+  		var name = value.split(' ');
+  		this.set('firstName', name[0]);
+  		this.set('lastName', name[1]);
+  		return value;
+  	}
+  }.property('firstName', 'lastName')
 });
