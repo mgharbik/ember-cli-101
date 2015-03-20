@@ -1,5 +1,6 @@
 import DS from 'ember-data';
 import Ember from 'ember';
+import changeGate from 'ember-computed-change-gate/change-gate';
 
 export default DS.Model.extend({
   articles: DS.hasMany('article', {async: true}),
@@ -17,5 +18,8 @@ export default DS.Model.extend({
   		this.set('lastName', name[1]);
   		return value;
   	}
-  }.property('firstName', 'lastName')
+  }.property('firstName', 'lastName'),
+  capitalizeFirstName: changeGate('firstName', function(firstName){
+  	return Ember.String.capitalize(firstName);
+  })
 });
